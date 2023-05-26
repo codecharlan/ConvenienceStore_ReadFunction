@@ -32,6 +32,7 @@ class CashierImplTest {
                 + " is $"+ product.getProductPrice();
         String actual = cashier.scanProduct(product);
         Assertions.assertEquals(expected,actual);
+        Assertions.assertNotNull(actual);
     }
 
 
@@ -42,5 +43,7 @@ class CashierImplTest {
                 product.getProductName() + " is being printed for " + customer.getName();
         String actual = cashier.printReceipt(customer, product);
         Assertions.assertEquals(expected,actual);
+        Assertions.assertNotNull(actual);
+        Assertions.assertTrue(true, customer.makePayment(customer,product));
     }
 }

@@ -28,6 +28,7 @@ class AuthoriseServiceManagerImplTest {
         String actual = managerimpl.signIn(employee,Role.MANAGER, "A3456782");
         Assertions.assertEquals(expected, actual);
         Assertions.assertNotEquals(unexpected,actual);
+        Assertions.assertNotNull(actual);
     }
 
     @Test
@@ -36,5 +37,6 @@ class AuthoriseServiceManagerImplTest {
                 + "!" + "\n"+ "Signed out Successfully";
         String actual = managerimpl.signOut(employee);
         Assertions.assertEquals(expected,actual);
+        Assertions.assertNotNull(actual);
     }
 }

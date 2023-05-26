@@ -26,6 +26,7 @@ class ManagerImplTest {
         String expected = employee + " has been hired on " + employee.getHireDate();
         String actual = manager.hireCashier(employee, Role.MANAGER);
         Assertions.assertEquals(expected, actual);
+        Assertions.assertNotNull(actual);
     }
 
     @Test
@@ -33,5 +34,6 @@ class ManagerImplTest {
         String expected = employee.getName() + " with ID" + employee.getEmployeeID() + " has been fired";
         String actual = manager.fireCashier(employee);
         Assertions.assertEquals(expected, actual);
+        Assertions.assertNotNull(actual);
     }
 }

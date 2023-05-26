@@ -26,6 +26,7 @@ class CustomerTest {
                 + product;
         String actual = customer.selectProduct(customer, product);
         Assertions.assertEquals(expected,actual);
+        Assertions.assertNotNull(actual);
     }
 
     @Test
@@ -34,5 +35,7 @@ class CustomerTest {
                 + " for " + product.getProductName() + " is Successful";
         String actual = customer.makePayment(customer, product);
         Assertions.assertEquals(expected, actual);
+        Assertions.assertNotNull(actual);
+        Assertions.assertTrue(true, String.valueOf(customer.getMoneyInWallet() >= product.getProductPrice()));
     }
 }

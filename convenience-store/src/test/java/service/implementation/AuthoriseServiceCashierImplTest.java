@@ -28,6 +28,7 @@ class AuthoriseServiceCashierImplTest {
         String actual = cashierimpl.signIn(employee,Role.CASHIER, "B2345671");
         Assertions.assertEquals(expected, actual);
         Assertions.assertNotEquals(unexpected,actual);
+        Assertions.assertNotNull(actual);
     }
 
     @Test
@@ -36,5 +37,6 @@ class AuthoriseServiceCashierImplTest {
                 + "!" + "\n"+ "Signed out Successfully";
         String actual = cashierimpl.signOut(employee);
         Assertions.assertEquals(expected,actual);
+        Assertions.assertNotNull(actual);
     }
 }
