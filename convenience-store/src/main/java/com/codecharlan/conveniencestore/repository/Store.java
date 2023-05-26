@@ -24,6 +24,43 @@ public class Store {
         this.categories = categories;
     }
 
+    public static List<Product> loadProductList(String filePath) {
+        List<Product> products = new ArrayList<>();
+        BufferedReader reader = null;
+
+        try {
+            reader = new BufferedReader(new FileReader(filePath));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                String productName = data[0];
+                String productCategory = data[1];
+                String productQuantity = data[2];
+                double productPrice = Double.parseDouble(data[3]);
+
+                Product product;
+                if (productQuantity.equals("0")) {
+                    product = new Product(productName, productPrice, "OUT OF STOCK", productCategory);
+                } else {
+                    product = new Product(productName, productPrice, productQuantity, productCategory);
+                }
+
+                products.add(product);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return products;
+    }
+
     public String getStoreName() {
         return storeName;
     }
@@ -58,43 +95,6 @@ public class Store {
 
     public void setCategories(List<String> categories) {
         this.categories = categories;
-    }
-
-    public static List<Product> loadProductList(String filePath) {
-        List<Product> products = new ArrayList<>();
-        BufferedReader reader = null;
-
-        try {
-            reader = new BufferedReader(new FileReader(filePath));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                String productName = data[0];
-                String productCategory = data[1];
-                String productQuantity = data[2];
-                double productPrice = Double.parseDouble(data[3]);
-
-                Product product;
-                if (productQuantity.equals(0)) {
-                    product = new Product(productName, productPrice, productQuantity, productCategory);
-                } else {
-                    product = new Product(productName, productPrice, "OUT OF STOCK", productCategory);
-                }
-
-                products.add(product);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return products;
     }
 
     public List<String> getCategory(List<Product> products) {

@@ -16,18 +16,19 @@ import java.util.List;
 public class ConvenienceStoreApplication {
 
     public static void main(String[] args) {
-        ManagerImpl manager = new ManagerImpl("Fred", Gender.MALE, "No 12, danny way", "A3452671", "09/11/2024", Role.MANAGER, 568676.66);
-        Employee employee = new Employee("Ernest", Gender.MALE, "No 12, danny way", "A3452672", "03/06/2020", Role.MANAGER, 200890.83);
-        CashierImpl cashier = new CashierImpl("Laura", Gender.FEMALE, "No 56, crane road", "A3452672", "03/06/2020", Role.CASHIER, 200890.83);
         List<Product> products = new ArrayList<>();
         List<String> categories = new ArrayList<>();
         List<Employee> employees = new ArrayList<>();
+        Store store = new Store("myStore", products, categories);
+        ManagerImpl manager = new ManagerImpl("Fred", Gender.MALE, "No 12, danny way", "A3452671", "09/11/2024", Role.MANAGER, 568676.66);
+        Employee employee = new Employee("Charlotte", Gender.MALE, "No 12, danny way", "A3452672", "03/06/2020", Role.MANAGER, 200890.83);
+        CashierImpl cashier = new CashierImpl("Laura", Gender.FEMALE, "No 56, crane road", "A3452672", "03/06/2020", Role.CASHIER, 200890.83);
         Product product = new Product("Milk", 3.45, "9", "beverage");
         Customer customer = new Customer("Mimie", Gender.FEMALE, "23, Ajason rd", 2341.567);
         AuthoriseServiceManagerImpl managerimpl = new AuthoriseServiceManagerImpl();
         AuthoriseServiceCashierImpl cashierimpl = new AuthoriseServiceCashierImpl();
         ProductCatalogServiceManagerImpl productimpl = new ProductCatalogServiceManagerImpl();
-        Store store = new Store("myStore", products, categories);
+
 
 
         System.out.println(managerimpl.signIn(manager,  Role.MANAGER, "A3456782"));
